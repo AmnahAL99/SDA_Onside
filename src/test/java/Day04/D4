@@ -1,0 +1,463 @@
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class SelectMenuTest {
+    WebDriver driver;
+
+    @Before
+    public void setup() {
+        // Setting up Chrome WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    @Test
+    public void testSelectMenu() {
+        // Navigate to the URL
+        driver.get("https://demoqa.com/select-menu");
+
+        // Locate the multiple select dropdown
+        WebElement multiSelectDropdown = driver.findElement(By.id("cars"));
+
+        // Create a Select object for the dropdown
+        Select select = new Select(multiSelectDropdown);
+
+        // Selecting multiple options from the dropdown
+        select.selectByVisibleText("Volvo");
+        select.selectByVisibleText("Audi");
+        select.selectByVisibleText("Opel");
+
+        // Retrieve all selected options and print them
+        List<WebElement> selectedOptions = select.getAllSelectedOptions();
+        for (WebElement option : selectedOptions) {
+            System.out.println("Selected option: " + option.getText());
+        }
+    }
+
+    @After
+    public void tearDown() {
+        // Closing the browser after the test
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+------------------------------------------------------------------
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class DropdownTest {
+    WebDriver driver;
+
+    @Before
+    public void setup() {
+        // Setting up Chrome WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    @Test
+    public void selectByIndexTest() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        Select select = new Select(dropdown);
+        select.selectByIndex(1); // Index starts from 0
+        assertEquals("Option 1", select.getFirstSelectedOption().getText());
+    }
+
+    @Test
+    public void selectByValueTest() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        Select select = new Select(dropdown);
+        select.selectByValue("2");
+        assertEquals("Option 2", select.getFirstSelectedOption().getText());
+    }
+
+    @Test
+    public void selectByVisibleTextTest() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("Option 1");
+        assertEquals("Option 1", select.getFirstSelectedOption().getText());
+    }
+
+    @Test
+    public void printAllTest() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        Select select = new Select(dropdown);
+        List<WebElement> options = select.getOptions();
+        for (WebElement option : options) {
+            System.out.println(option.getText());
+        }
+    }
+
+    @Test
+    public void printFirstSelectedOptionTest() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        Select select = new Select(dropdown);
+        System.out.println("First Selected Option: " + select.getFirstSelectedOption().getText());
+    }
+
+    @Test
+    public void verifyDropdownHasOption2Text() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        Select select = new Select(dropdown);
+        List<WebElement> options = select.getOptions();
+        boolean option2Found = false;
+        for (WebElement option : options) {
+            if (option.getText().equals("Option 2")) {
+                option2Found = true;
+                break;
+            }
+        }
+        assertTrue(option2Found);
+    }
+
+    @Test
+    public void verifyDropdownSize() {
+        driver.get("https://the-internet.herokuapp.com/dropdown");
+        WebElement dropdown = driver.findElement(By.id("dropdown"));
+        Select select = new Select(dropdown);
+        List<WebElement> options = select.getOptions();
+        assertEquals(3, options.size());
+    }
+
+    @After
+    public void tearDown() {
+        // Closing the browser after each test
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+---------------------------------------------------------
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+import java.util.List;
+
+public class DemoQaSelectMenuTest {
+    public static void main(String[] args) {
+        // Setting up Chrome WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        WebDriver driver = new ChromeDriver(options);
+
+        // Launching the browser and navigating to the URL
+        driver.get("https://demoqa.com/select-menu");
+
+        // Selecting Old Style Select Menu using element id
+        WebElement oldStyleSelectMenu = driver.findElement(By.id("oldSelectMenu"));
+        Select selectMenu = new Select(oldStyleSelectMenu);
+
+        // Printing all options of the dropdown
+        List<WebElement> optionsList = selectMenu.getOptions();
+        System.out.println("Options in the dropdown:");
+        for (WebElement option : optionsList) {
+            System.out.println(option.getText());
+        }
+
+        // Selecting 'Purple' using index
+        selectMenu.selectByIndex(3); // Index starts from 0
+
+        // Selecting 'Magenta' using visible text
+        selectMenu.selectByVisibleText("Magenta");
+
+        // Selecting an option using value
+        selectMenu.selectByValue("7");
+
+        // Closing the browser
+        driver.quit();
+    }
+}
+---------------------------------------------------------
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+import java.util.List;
+
+public class DemoQaMultiSelectTest {
+    public static void main(String[] args) {
+        // Setting up Chrome WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        WebDriver driver = new ChromeDriver(options);
+
+        // Launching the browser and navigating to the URL
+        driver.get("https://demoqa.com/select-menu");
+
+        // Selecting Standard Multi-Select using element id
+        WebElement multiSelectElement = driver.findElement(By.id("cars"));
+        Select multiSelect = new Select(multiSelectElement);
+
+        // Verifying that the element is multi-select
+        if (multiSelect.isMultiple()) {
+            System.out.println("Element is multi-select.");
+        } else {
+            System.out.println("Element is not multi-select.");
+        }
+
+        // Selecting 'Opel' using index and deselecting the same using index
+        multiSelect.selectByIndex(2);
+        System.out.println("Selected option: Opel");
+        multiSelect.deselectByIndex(2);
+        System.out.println("Deselected option: Opel");
+
+        // Selecting 'Saab' using value and deselecting the same using value
+        multiSelect.selectByValue("saab");
+        System.out.println("Selected option: Saab");
+        multiSelect.deselectByValue("saab");
+        System.out.println("Deselected option: Saab");
+
+        // Deselecting all options
+        multiSelect.deselectAll();
+        System.out.println("All options deselected.");
+
+        // Closing the browser
+        driver.quit();
+    }
+}
+-----------------------------------------------------
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Guru99RegistrationTest {
+    public static void main(String[] args) {
+        // Setting up Chrome WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        WebDriver driver = new ChromeDriver(options);
+
+        // Launching the browser and navigating to the registration page
+        driver.get("https://demo.guru99.com/test/newtours/register.php");
+
+        // Finding and filling the registration form
+        WebElement firstNameField = driver.findElement(By.name("firstName"));
+        firstNameField.sendKeys("John");
+
+        WebElement lastNameField = driver.findElement(By.name("lastName"));
+        lastNameField.sendKeys("Doe");
+
+        WebElement phoneField = driver.findElement(By.name("phone"));
+        phoneField.sendKeys("1234567890");
+
+        WebElement emailField = driver.findElement(By.id("userName"));
+        emailField.sendKeys("john.doe@example.com");
+
+        WebElement addressField = driver.findElement(By.name("address1"));
+        addressField.sendKeys("123 Street");
+
+        WebElement cityField = driver.findElement(By.name("city"));
+        cityField.sendKeys("New York");
+
+        WebElement stateField = driver.findElement(By.name("state"));
+        stateField.sendKeys("NY");
+
+        WebElement postalCodeField = driver.findElement(By.name("postalCode"));
+        postalCodeField.sendKeys("10001");
+
+        WebElement countryDropdown = driver.findElement(By.name("country"));
+        countryDropdown.sendKeys("UNITED STATES");
+
+        WebElement usernameField = driver.findElement(By.id("email"));
+        usernameField.sendKeys("johndoe");
+
+        WebElement passwordField = driver.findElement(By.name("password"));
+        passwordField.sendKeys("P@ssw0rd");
+
+        WebElement confirmPasswordField = driver.findElement(By.name("confirmPassword"));
+        confirmPasswordField.sendKeys("P@ssw0rd");
+
+        // Submitting the form
+        WebElement submitButton = driver.findElement(By.name("submit"));
+        submitButton.click();
+
+        // Waiting for a while to observe the result
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Closing the browser
+        driver.quit();
+    }
+}
+------------------------------------------
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import static org.junit.Assert.assertEquals;
+
+public class DeleteCustomerTest {
+    WebDriver driver;
+
+    @Before
+    public void setUp() {
+        // Setting up Chrome WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
+    }
+
+    @Test
+    public void deleteCustomerTest() {
+        // Navigate to the URL
+        driver.get("http://demo.guru99.com/test/delete_customer.php");
+
+        // Find and fill the customer ID field
+        driver.findElement(By.name("cusid")).sendKeys("123");
+
+        // Click on the submit button to delete the customer
+        driver.findElement(By.name("submit")).click();
+
+        // Handling first alert
+        Alert alert1 = driver.switchTo().alert();
+        assertEquals("Do you really want to delete this Customer?", alert1.getText());
+        alert1.accept();
+
+        // Handling second alert
+        Alert alert2 = driver.switchTo().alert();
+        assertEquals("Customer Successfully Delete!", alert2.getText());
+        alert2.accept();
+    }
+
+    @After
+    public void tearDown() {
+        // Close the browser
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+-------------------------------------------------------
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import static org.junit.Assert.assertEquals;
+
+public class AlertTests {
+    WebDriver driver;
+
+    @Before
+    public void setUp() {
+        // Setting up Chrome WebDriver
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
+    }
+
+    @Test
+    public void testAlertWithOK() {
+        // Navigate to the URL
+        driver.get("http://demo.automationtesting.in/Alerts.html");
+
+        // Click "Alert with OK"
+        driver.findElement(By.xpath("//button[contains(text(),'Alert with OK')]")).click();
+
+        // Handle the alert
+        Alert alert = driver.switchTo().alert();
+        assertEquals("I am an alert box!", alert.getText());
+        alert.accept();
+        System.out.println("Alert text: " + alert.getText());
+    }
+
+    @Test
+    public void testAlertWithOKAndCancel() {
+        // Navigate to the URL
+        driver.get("http://demo.automationtesting.in/Alerts.html");
+
+        // Click "Alert with OK & Cancel"
+        driver.findElement(By.xpath("//button[contains(text(),'Alert with OK & Cancel')]")).click();
+
+        // Handle the alert
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
+        System.out.println("Alert dismissed");
+    }
+
+    @Test
+    public void testAlertWithTextbox() {
+        // Navigate to the URL
+        driver.get("http://demo.automationtesting.in/Alerts.html");
+
+        // Click "Alert with Textbox"
+        driver.findElement(By.xpath("//button[contains(text(),'Alert with Textbox')]")).click();
+
+        // Handle the alert
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys("Bootcamp");
+        alert.accept();
+
+        // Get the message displayed after accepting the alert
+        String message = driver.findElement(By.id("demo1")).getText();
+        assertEquals("Hello Bootcamp How are you today", message);
+        System.out.println("Message: " + message);
+    }
+
+    @After
+    public void tearDown() {
+        // Close the browser
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+-------------------------------------------------------------------
