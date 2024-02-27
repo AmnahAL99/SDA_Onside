@@ -84,7 +84,6 @@ public class TodoListTest {
     @Before
     public void setUp() {
         // Set path to your WebDriver
-        System.setProperty("webdriver.chrome.driver", "path/to/your/chromedriver");
         driver = new ChromeDriver();
         driver.get("https://webdriveruniversity.com/To-Do-List/index.html");
     }
