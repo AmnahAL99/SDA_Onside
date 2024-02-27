@@ -7,8 +7,8 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 
-    /*
+
     public class SeleniumTests {
     WebDriver driver;
 
@@ -25,28 +25,37 @@ import java.util.concurrent.TimeUnit;
         // Setting up Chrome WebDriver
       //  System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
 
-        ChromeOptions options = new ChromeOptions();
+       // ChromeOptions options = new ChromeOptions();
+        EdgeOptions options = new EdgeOptions();
         options.addArguments("--start-maximized");
-        driver = new ChromeDriver(options);
+        options.addArguments("disable-infobars");
+        options.addArguments("disable-popup-blocking");
+        driver = new EdgeDriver(options);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 
     @Test
     public void testDropDownSynchronization() {
-        driver.get("https://www.example.com");
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--start-maximized");
+        options.addArguments("disable-infobars");
+        options.addArguments("disable-popup-blocking");
+        driver = new EdgeDriver(options);
+        driver.get("https://www.google.com");
         // Example: Select dropdown option
-        WebElement dropdown = driver.findElement(By.id("dropdown"));
+      //  WebElement dropdown = driver.findElement(By.id("dropdown"));
         // Wait until dropdown is clickable
        // WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(dropdown));
-        Select select = new Select(dropdown);
-        select.selectByVisibleText("Option 1");
+      //  wait.until(ExpectedConditions.elementToBeClickable(dropdown));
+        //Select select = new Select(dropdown);
+       // select.selectByVisibleText("Option 1");
         // Perform further actions...
     }
 
     @Test
     public void testAlerts() {
-        driver.get("https://www.example.com");
+        driver.get("https://www.google.com");
         // Example: Handle JavaScript alert
         WebElement alertButton = driver.findElement(By.id("alert-button"));
         alertButton.click();
@@ -88,4 +97,3 @@ import java.util.concurrent.TimeUnit;
 }
 
 
-     */

@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class Challenge {
 
@@ -18,19 +18,28 @@ public class Challenge {
 
         driver = new EdgeDriver();
     }
-
-
-
-
     @Test
     public void test1() {
-        driver.get("https://demoqa.com/select-menu");
+        driver.get("https://automationexercise.com/");
         driver.manage().window().maximize();
-        System.out.println("URL Current  url: " + driver.getCurrentUrl());
+        driver.findElement(By.xpath("//a[normalize-space()='Signup / Login']")).click();
+        // Enter email and password
+        driver.findElement(By.xpath("//input[@data-qa='login-email']")).sendKeys("sda@test.com");
+        driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("sdainclasstask");
+
+        // Click on Login button
+        driver.findElement(By.xpath("//a[normalize-space()='Signup / Login']")).click();
+        // Check for error message and return true or false
+        assertTrue(isErrorMessageVisible());
+
 
     }
 
+    private boolean isErrorMessageVisible() {
+        boolean isVisible = !driver.getCurrentUrl().isEmpty();
 
+        return isVisible;
+    }
 
 
     @AfterClass
@@ -40,14 +49,3 @@ public class Challenge {
         }
     }
 }
-/*                Tthis method for print result
-            // Get the result and print it
-            WebElement resultElement = driver.findElement(By.id("answer"));
-            String result = resultElement.getText();
-            ----------------------------------
-                and this for print url
-  System.out.println("URL after navigating back: " + driver.getCurrentUrl());
-           ----------------------------------
-           and this be more helpfull
-
- */

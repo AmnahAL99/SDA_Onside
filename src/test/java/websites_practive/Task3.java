@@ -49,43 +49,6 @@ public class Task3 {
             WebElement signInButton = driver.findElement(By.xpath("//button[@type='submit']"));
         }
 
-        @Test
-        public void creatTest() {
-
-            driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-
-              //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-                createButtons(20);
-
-            }
-
-            public void createButtons ( int numberOfButtons){
-                WebElement button = driver.findElement(By.xpath("//*[.='Add Element']"));
-                for (int i = 0; i < numberOfButtons; i++) {
-                    button.click();
-                }
-            }
-
-
-    @Test
-    public void dTest() {
-
-        driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-
-        //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        dButtons(20);
-
-    }
-
-    public void dButtons ( int numberOfButtons){
-        WebElement button = driver.findElement(By.xpath("//*[.='Add Element']"));
-        for (int i = 0; i > numberOfButtons; i--) {
-            button.click();
-        }
-    }
-
 
         @AfterClass
         public static void tearDown() {
