@@ -16,7 +16,6 @@ public class AlertTests2 {
     @Before
     public void setUp() {
         // Set path to your chromedriver.exe
-        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
         // Initialize the driver
         driver = new ChromeDriver();
         // Navigate to the page with the JavaScript alerts

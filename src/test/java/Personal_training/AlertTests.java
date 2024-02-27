@@ -19,7 +19,6 @@ public class AlertTests {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
         driver = new ChromeDriver();
         //wait = new WebDriverWait(driver, 10);
         driver.get("http://demo.automationtesting.in/Alerts.html");

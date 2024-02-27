@@ -16,7 +16,6 @@ public class IframeTest {
     @Before
     public void setUp() {
         // Set the path to your chromedriver.exe
-        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
         // Initialize the driver
         driver = new ChromeDriver();
         // Navigate to the URL for the iframe test
