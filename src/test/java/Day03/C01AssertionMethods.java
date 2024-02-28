@@ -31,6 +31,7 @@ public class C01AssertionMethods {
         // If the method takes one parameter and the parameter is false, the test is PASSED,
         // if it is true, the test is FAILED.
       Assert.assertFalse(4==2);
+
     }
 
     @Test
@@ -73,6 +74,7 @@ public class C01AssertionMethods {
       String [] arr ={"a","b"};
         String [] brr ={"a","b"};
         Assert.assertArrayEquals(arr,brr);
+
 
     }
 }

@@ -18,6 +18,7 @@ public class C01JavaFakerClass {
      System.out.println("fullname" + " " + fullname2);
      System.out.println("fullname" + " " +fullname3);
 
+
         System.out.println("number " + faker.number().digit());
        // System.out.println("address " + faker.address());
         System.out.println("faker.address().fullAddress() = " + faker.address().fullAddress());

@@ -20,6 +20,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
         driver = new EdgeDriver();
         driver.get("https://the-internet.herokuapp.com/dropdown");
         dropdown = new Select(driver.findElement(By.id("dropdown")));
+        driver.findElement(By.id("firstName"));
+        driver.findElement((By.id("lastName")));
+        driver.findElement(By.id("birthdate"));
+        driver.findElement(By.id("email"));
+        driver.findElement(By.id("phone"));
+
+
     }
 
     @Test
