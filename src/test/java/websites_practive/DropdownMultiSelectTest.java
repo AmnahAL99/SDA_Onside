@@ -1,4 +1,4 @@
-package HW.Day06;
+package websites_practive;
 
 import org.junit.After;
 import org.junit.Before;

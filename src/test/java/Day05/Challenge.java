@@ -18,10 +18,81 @@ public class Challenge {
 
     WebDriver driver;
 
+<<<<<<< HEAD
     @BeforeMethod
     public void setUp() {
         driver = new EdgeDriver();
        // wait = new WebDriverWait(driver, 10);
+=======
+    @BeforeClass
+
+    public static void setUp() {
+        driver = new EdgeDriver();
+        driver.get("(\"https://webdriveruniversity.com/To-Do-List/index.html/\");");
+    }
+    @Test
+    public void testAddAndRemoveTodo() {
+        // Add a TODO
+        WebElement addTodoField = driver.findElement(By.xpath("//input[@placeholder='Add new todo']"));
+        String newTodo = "New Selenium Todo";
+        addTodoField.sendKeys(newTodo + Keys.ENTER);
+
+        // Assert the TODO was added successfully
+        WebElement addedTodoItem = driver.findElement(By.xpath("//li[contains(text(), '" + newTodo + "')]"));
+        assertTrue(addedTodoItem.isDisplayed(), "New TODO item should be displayed in the list");
+
+        // Remove the added TODO
+        WebElement deleteButton = driver.findElement(By.xpath("//li[contains(text(), '" + newTodo + "')]/span/i"));
+        deleteButton.click();
+
+        // Assert the TODO was removed successfully
+        // Here, you might need to add some logic to wait for the element to be removed or check the absence differently
+        boolean isTodoPresentAfterDeletion;
+        try {
+            driver.findElement(By.xpath("//li[contains(text(), '" + newTodo + "')]"));
+            isTodoPresentAfterDeletion = true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            isTodoPresentAfterDeletion = false;
+        }
+        assertFalse(isTodoPresentAfterDeletion, "TODO item should be removed from the list");
+    }
+
+    @Test
+    public void testMarkTodoAsCompleted() {
+        // Assuming an existing TODO with a specific text
+        String todoText = "Some Other Todo";
+        WebElement todoItem = driver.findElement(By.xpath("//li[contains(text(), '" + todoText + "')]"));
+        todoItem.click();
+
+        // Assert the TODO item is marked as completed
+        // This assertion depends on how the application visually indicates a completed TODO. Here's a generic example.
+        String completedTodoClass = todoItem.getAttribute("class");
+        assertTrue(completedTodoClass.contains("completed"), "TODO item should be marked as completed");
+    }
+
+
+}
+
+/*
+------------------------------OR-------------------------------------------
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.List;
+import static org.junit.Assert.*;
+
+public class TodoListTest {
+    private WebDriver driver;
+
+    @Before
+    public void setUp() {
+        // Set path to your WebDriver
+        driver = new ChromeDriver();
+>>>>>>> e8ebcc687d0f64ac3440348b1506de2fd47fb67b
         driver.get("https://webdriveruniversity.com/To-Do-List/index.html");
     }
     @AfterMethod
