@@ -1,4 +1,4 @@
-package Day05;
+package HW.Day05;
 
 import org.junit.After;
 import org.junit.Assert;

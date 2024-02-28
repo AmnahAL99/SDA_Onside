@@ -1,4 +1,4 @@
-package Personal_training;
+package HW.Day06;
 
 import org.junit.After;
 import org.junit.Before;

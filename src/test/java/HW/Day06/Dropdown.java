@@ -1,4 +1,4 @@
-package Personal_training;
+package HW.Day06;
 
 import org.junit.After;
 import org.junit.Before;
@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -46,19 +45,24 @@ public class Dropdown {
         }
 
         // Select 'Purple' by index
-        dropdown.selectByIndex(3); // Assuming 'Purple' is at index 3
+        dropdown.selectByIndex(4);
 
         // Select 'Magenta' by visible text
         dropdown.selectByVisibleText("Magenta");
 
         // Select an option by value (replace "value" with the actual value attribute of the option you want to select)
-       // dropdown.selectByValue("value");
+        //dropdown.selectByValue("red");
+
     }
+  /*
+
 
     @After
     public void tearDown() {
         // Close the browser
         driver.quit();
     }
+
+   */
 }
 

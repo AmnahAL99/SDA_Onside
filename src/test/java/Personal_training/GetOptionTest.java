@@ -28,7 +28,6 @@ public class GetOptionTest {
 
         List<WebElement> options = select.getOptions();
         System.out.println("Number of options in the dropdown: " + options.size());
-
         System.out.println("Options in the dropdown:");
         for (WebElement option : options) {
             System.out.println(option.getText());
