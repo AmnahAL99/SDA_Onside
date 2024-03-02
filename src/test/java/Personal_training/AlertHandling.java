@@ -20,9 +20,9 @@ public class AlertHandling {
     public void setUp() {
         // Set the path to the chromedriver executable
 
-        // Create a new instance of the Chrome driver
+        // Create a new instance of the Edge driver
         driver = new EdgeDriver();
-        //wait = new WebDriverWait(driver, 10);
+       // wait = new WebDriverWait(driver, 10);
 
         // Navigate to the URL
         driver.get("http://demo.guru99.com/test/delete_customer.php");

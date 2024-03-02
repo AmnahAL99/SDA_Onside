@@ -6,7 +6,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
 import static org.junit.Assert.*;
 
 public class IframeTest {
@@ -15,9 +16,8 @@ public class IframeTest {
 
     @Before
     public void setUp() {
-        // Set the path to your chromedriver.exe
         // Initialize the driver
-        driver = new ChromeDriver();
+        driver = new EdgeDriver();
         // Navigate to the URL for the iframe test
         driver.get("https://the-internet.herokuapp.com/iframe");
     }

@@ -27,21 +27,23 @@ public class AlertTests {
     @Test
     public void testAlerts() {
         // Alert with OK
-        driver.findElement(By.xpath("//button[contains(text(),'display an alert box:')]")).click();
+        driver.findElement(By.xpath("//button[@class='btn btn-danger']")).click();
         Alert alert = wait.until(ExpectedConditions.alertIsPresent());
         assertEquals("I am an alert box!", alert.getText());
         alert.accept();
+        driver.findElement(By.xpath("//button[@id='display-other-button']"));
 
         // Alert with OK & Cancel
-        driver.findElement(By.xpath("//a[contains(text(),'Alert with OK & Cancel')]")).click();
-        driver.findElement(By.xpath("//button[contains(text(),'display a confirm box')]")).click();
+        driver.findElement(By.xpath("//a[normalize-space()='Alert with OK & Cancel']")).click();
+        driver.findElement(By.xpath("//button[@class='btn btn-primary']")).click();
         alert = wait.until(ExpectedConditions.alertIsPresent());
         assertEquals("Press a Button !", alert.getText());
         alert.dismiss();
-
+  
         // Alert with Textbox
-        driver.findElement(By.xpath("//a[contains(text(),'Alert with Textbox')]")).click();
-        driver.findElement(By.xpath("//button[contains(text(),'demonstrate the prompt box')]")).click();
+        driver.findElement(By.xpath("//a[normalize-space()='Alert with Textbox']")).click();
+        driver.findElement(By.xpath("//button[@class='btn btn-info']")).click();
+       // driver.switchTo().alert().sendKeys("");
         alert = wait.until(ExpectedConditions.alertIsPresent());
         assertEquals("Please enter your name", alert.getText());
         alert.sendKeys("Bootcamp");
@@ -56,6 +58,7 @@ public class AlertTests {
     public void tearDown() {
         driver.quit();
     }
+
 }
 /*
 ------------------------------OR---------------------------------
