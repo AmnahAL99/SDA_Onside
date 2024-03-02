@@ -1,4 +1,4 @@
-package Day07;
+package HW.Day07;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

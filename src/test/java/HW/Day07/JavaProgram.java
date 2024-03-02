@@ -1,4 +1,4 @@
-package Personal_training;
+package HW.Day07;
 
 public class JavaProgram {
 
