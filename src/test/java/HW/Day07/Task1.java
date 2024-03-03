@@ -23,7 +23,8 @@ public class Task1 {
             // Verify the message text
             String expectedMessage = "Congratulations! You must have the proper credentials.";
             Assert.assertEquals("The congratulations message is not as expected", expectedMessage, messageElement.getText());
-        } finally {
+        }
+        finally {
             // Close the browser
             driver.quit();
         }
