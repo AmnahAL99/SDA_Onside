@@ -30,7 +30,9 @@ public class Task1 extends TestBase {
 
        actions.dragAndDrop(first5000Button, amount).perform();
 
-
+           //Verify the visibility of Perfect text.
+        WebElement perfect = driver.findElement(By.xpath("//a[contains(@class,'button-green')][1]"));
+        Assert.assertTrue(perfect.isDisplayed());
 
 
     }
