@@ -63,9 +63,9 @@ public class C16_WondowHandle {
         driver.get("https://www.google.com/");
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://www.linkedin.com/");
-        String currentWH = driver.getWindowHandle();
-        Set<String> WindowHandle = driver.getWindowHandles();
-        System.out.printf(driver.getTitle());
+//        String currentWH = driver.getWindowHandle();
+//        Set<String> WindowHandle = driver.getWindowHandles();
+//        System.out.printf(driver.getTitle());
        //2.Way
         List<String> strWH = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(strWH.get(0));
@@ -73,6 +73,6 @@ public class C16_WondowHandle {
 
     }
 
-
+// set & nitrites selenium java
 
 }

@@ -32,12 +32,13 @@ public class Task3 {
 
         // Store all currently open windows
         Set<String> allWindows = driver.getWindowHandles();
+       // allWindows.iterator();
 
         // Loop through the window handles
         for (String windowHandle : allWindows) {
             if (!originalWindow.contentEquals(windowHandle)) {
                 driver.switchTo().window(windowHandle);
-
+                //System.out.println(allWindows);
                 // Print the text from the child window
                 System.out.println("Text in child window: " + driver.findElement(By.tagName("body")).getText());
 
