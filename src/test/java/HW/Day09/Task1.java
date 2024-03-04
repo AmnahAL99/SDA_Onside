@@ -28,11 +28,15 @@ public class Task1 extends TestBase {
         WebElement creditSideAccount = driver.findElement(By.id("loan")); //  for the CREDIT SIDE Account
         actions.dragAndDrop(salesButton, creditSideAccount).perform();
 
+<<<<<<< HEAD
         WebElement second5000Button = driver.findElement(By.xpath("(//a[contains(text(),'5000')])[2]"));
         WebElement creditSideAmount = driver.findElement(By.xpath("//ol[@id='amt8']/li"));
         actions.dragAndDrop(second5000Button, creditSideAmount).build().perform();
 
         //Verify the visibility of Perfect text.
+=======
+           //Verify the visibility of Perfect text.
+>>>>>>> 104d22f90c15a18a1942e53c56a8ea9364104009
         WebElement perfect = driver.findElement(By.xpath("//a[contains(@class,'button-green')][1]"));
         Assert.assertTrue(perfect.isDisplayed());
 
