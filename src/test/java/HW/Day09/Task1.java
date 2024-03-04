@@ -12,39 +12,6 @@ import static org.junit.Assert.assertTrue;
 
 public class Task1 extends TestBase {
 
-
-    @Test
-    public void testDragAndDrop1() {
-        driver.get("http://demo.guru99.com/test/drag_drop.html");
-        // Create object of Actions class
-
-        // Perform drag and drop for BANK button
-        WebElement bankButton = driver.findElement(By.xpath("//a[contains(text(),'BANK')]"));
-        WebElement debitSideAccount = driver.findElement(By.id("bank")); //  for the DEBIT SIDE Account
-        actions.dragAndDrop(bankButton, debitSideAccount).perform();
-
-        // Perform drag and drop for SALES button
-        WebElement salesButton = driver.findElement(By.xpath("//a[contains(text(),'SALES')]"));
-        WebElement creditSideAccount = driver.findElement(By.id("loan")); //  for the CREDIT SIDE Account
-        actions.dragAndDrop(salesButton, creditSideAccount).perform();
-
-<<<<<<< HEAD
-        WebElement second5000Button = driver.findElement(By.xpath("(//a[contains(text(),'5000')])[2]"));
-        WebElement creditSideAmount = driver.findElement(By.xpath("//ol[@id='amt8']/li"));
-        actions.dragAndDrop(second5000Button, creditSideAmount).build().perform();
-
-        //Verify the visibility of Perfect text.
-=======
-           //Verify the visibility of Perfect text.
->>>>>>> 104d22f90c15a18a1942e53c56a8ea9364104009
-        WebElement perfect = driver.findElement(By.xpath("//a[contains(@class,'button-green')][1]"));
-        Assert.assertTrue(perfect.isDisplayed());
-
-
-    }
-
-
-
     @Test
     public void testDragAndDrop() {
         // Navigate to the demo page
