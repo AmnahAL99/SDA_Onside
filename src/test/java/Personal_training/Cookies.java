@@ -12,7 +12,7 @@ public class Cookies  extends TestBase {
 
     @Test
     public void test(){
-        driver.get("https://www.linkedin.com");
+        driver.get("https://kitchen.applitools.com/ingredients/cookie");
         Set<Cookie> allCookies = driver.manage().getCookies();
         allCookies.forEach(System.out::println); //lambda
       //  driver.manage().getCookieNamed("");
