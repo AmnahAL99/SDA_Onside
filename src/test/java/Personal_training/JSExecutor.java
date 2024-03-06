@@ -5,15 +5,11 @@ import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
 
 public class JSExecutor {
-
-
-
 
     private WebDriver driver;
 
@@ -51,7 +47,6 @@ public class JSExecutor {
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyRelease(KeyEvent.VK_F4);
     }
-
 
 
 }
