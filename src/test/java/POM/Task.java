@@ -1,7 +1,4 @@
 package POM;
-import POM.DataImportPage;
-import POM.LoginPage;
-import POM.PIMPage;
 import Utilities.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,7 +7,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 
-public class Task3 extends TestBase {
+public class Task extends TestBase {
 
     @Test
     public void test() {

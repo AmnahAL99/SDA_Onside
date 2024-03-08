@@ -1,7 +1,4 @@
 package HW.Day11;
-import POM.DataImportPage;
-import POM.LoginPage;
-import POM.PIMPage;
 import Utilities.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,15 +15,15 @@ public class Task3 extends TestBase {
         driver.get("https://opensource-demo.orangehrmlive.com/");
 
         // Login
-        POM.LoginPage loginPage = new LoginPage(driver);
+        HW.Day11.LoginPage loginPage = new HW.Day11.LoginPage(driver);
         loginPage.login("Admin", "admin123");
 
         // Navigate to PIM > Configuration > Data Import
-        POM.PIMPage pimPage = new PIMPage(driver);
+        HW.Day11.PIMPage pimPage = new HW.Day11.PIMPage(driver);
         pimPage.navigateToDataImport();
 
         // Click to download sample CSV
-        POM.DataImportPage dataImportPage = new DataImportPage(driver);
+        HW.Day11.DataImportPage dataImportPage = new HW.Day11.DataImportPage(driver);
         dataImportPage.downloadSampleCSV();
 
         String downloadDir = System.getProperty("user.home") + System.getProperty("file.separator") + "Downloads";
