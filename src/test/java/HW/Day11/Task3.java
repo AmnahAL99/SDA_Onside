@@ -8,7 +8,6 @@ import java.time.Duration;
 import java.util.HashMap;
 
 public class Task3 extends TestBase {
-
     @Test
     public void test() {
         // Navigate to the URL
@@ -27,10 +26,6 @@ public class Task3 extends TestBase {
         dataImportPage.downloadSampleCSV();
 
         String downloadDir = System.getProperty("user.home") + System.getProperty("file.separator") + "Downloads";
-        // Configure Edge with preferences
-        HashMap<String, Object> edgePrefs = new HashMap<>();
-        edgePrefs.put("profile.default_content_settings.popups", 0);
-        edgePrefs.put("download.default_directory", downloadDir);
 
         // Wait for the download to complete. Consider a more robust wait mechanism.
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
