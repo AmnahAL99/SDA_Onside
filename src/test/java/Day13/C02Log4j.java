@@ -9,7 +9,7 @@ public class C02Log4j {
 
         PropertyConfigurator.configure("log4j.properties");
 
-     //   Logger logger = Logger.getLogger(C03Log4j_UseProperties.class);
+       // Logger logger = Logger.getLogger(C03Log4j_UseProperties.class);
 
 //        logger.trace("This is a trace message");
 //        logger.debug("This is a debug message");
